@@ -1,0 +1,162 @@
+/* View-level design tokens and overrides
+   - Keep palette consistent across all views under `src/views/`
+   - Prefer using existing Material Dashboard / Bootstrap classes
+*/
+
+:root {
+  /* Brand / accent (mypage.vue 기준) */
+  --app-accent: #4caf50;
+  --app-accent-rgb: 76, 175, 80;
+
+  /* Semantic gradients */
+  --app-success-start: #66bb6a;
+  --app-success-end: #43a047;
+  --app-info-start: #49a3f1;
+  --app-info-end: #1a73e8;
+  --app-warning-start: #ffa726;
+  --app-warning-end: #fb8c00;
+  --app-danger-start: #ef5350;
+  --app-danger-end: #e53935;
+  --app-dark-start: #42424a;
+  --app-dark-end: #191919;
+
+  --app-gradient-success: linear-gradient(
+    195deg,
+    var(--app-success-start) 0%,
+    var(--app-success-end) 100%
+  );
+  --app-gradient-info: linear-gradient(
+    195deg,
+    var(--app-info-start) 0%,
+    var(--app-info-end) 100%
+  );
+  --app-gradient-warning: linear-gradient(
+    195deg,
+    var(--app-warning-start) 0%,
+    var(--app-warning-end) 100%
+  );
+  --app-gradient-danger: linear-gradient(
+    195deg,
+    var(--app-danger-start) 0%,
+    var(--app-danger-end) 100%
+  );
+  --app-gradient-dark: linear-gradient(
+    195deg,
+    var(--app-dark-start) 0%,
+    var(--app-dark-end) 100%
+  );
+
+  /* Surfaces */
+  --app-surface: #ffffff;
+  --app-surface-muted: #f8f9fa;
+  --app-border: #d2d6da;
+  --app-border-muted: #e9ecef;
+
+  /* Shape & motion */
+  --app-radius-lg: 12px;
+  --app-radius-md: 10px;
+  --app-transition: all 0.2s ease-in-out;
+
+  /* Focus */
+  --app-focus-ring: 0 0 0 3px rgba(var(--app-accent-rgb), 0.15);
+  --app-focus-ring-sm: 0 0 0 2px rgba(var(--app-accent-rgb), 0.2);
+  --app-focus-ring-color: rgba(var(--app-accent-rgb), 0.2);
+
+  /* Text */
+  --app-text: #344767;
+  --app-text-muted: #495057;
+  --app-text-secondary: #67748e;
+  --app-success-bg: #e8f5e9;
+
+  /* Shadows */
+  --app-shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.06);
+  --app-shadow-md: 0 4px 12px rgba(0, 0, 0, 0.05);
+  --app-shadow-lg: 0 10px 30px rgba(0, 0, 0, 0.05);
+  --app-shadow-modal: 0 10px 30px rgba(0, 0, 0, 0.15);
+
+  /* Overlay / backdrop */
+  --app-backdrop: rgba(0, 0, 0, 0.5);
+  --app-backdrop-light: rgba(0, 0, 0, 0.02);
+
+  /* Scrollbar (optional) */
+  --app-scrollbar-thumb: #c4c8cc;
+  --app-scrollbar-track: #f0f2f5;
+}
+
+/* === Palette overrides (keep consistent everywhere) === */
+.bg-gradient-success {
+  background: var(--app-gradient-success) !important;
+}
+.bg-gradient-info {
+  background: var(--app-gradient-info) !important;
+}
+.bg-gradient-warning {
+  background: var(--app-gradient-warning) !important;
+}
+.bg-gradient-danger {
+  background: var(--app-gradient-danger) !important;
+}
+.bg-gradient-dark {
+  background: var(--app-gradient-dark) !important;
+}
+
+/* === Form focus consistency === */
+.form-control:focus,
+.form-select:focus,
+textarea.form-control:focus,
+input.form-control:focus {
+  border-color: var(--app-accent) !important;
+  box-shadow: var(--app-focus-ring) !important;
+}
+
+/* === Icon + input rows (mypage/mypageInfo) === */
+.custom-input-group,
+.input-container {
+  display: flex;
+  align-items: center;
+  padding: 14px 20px;
+  border-radius: var(--app-radius-lg);
+  border: 1px solid var(--app-border);
+  background-color: var(--app-surface);
+  transition: var(--app-transition);
+}
+
+.clean-input,
+.form-input {
+  flex: 1;
+  border: none;
+  background: transparent;
+  outline: none;
+  font-size: 1rem;
+  color: #495057;
+}
+
+.disabled-bg,
+.disabled-field {
+  background-color: var(--app-surface-muted);
+  border-color: var(--app-border-muted);
+}
+
+.active-focus:focus-within,
+.active-border:focus-within {
+  border-color: var(--app-accent);
+  box-shadow: var(--app-focus-ring);
+}
+
+/* === Reusable animations === */
+@keyframes appFadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animation-fade-in,
+.animation-slide-up {
+  animation: appFadeInUp 0.5s ease-out;
+}
+
